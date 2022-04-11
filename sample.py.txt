@@ -1,0 +1,61 @@
+def dfs(edges , verticeCount , start):
+    d = {}
+    for eFrom , eTo in edges:
+        if eFrom in d:
+            d[eFrom].append(eTo)
+            continue
+        d[eFrom] = [eTo]
+    check = {start : 0}
+    visited = {}
+    for i in range(1 , verticeCount + 1 ):
+        visited[i] = False
+    root = [start]
+    while(root):
+        current = root.pop()
+        if(visited[current]):
+            continue
+        print(current)
+        for i in d[current]:
+            if(i in check):
+                continue
+            check[i]=0
+            root.append(i)
+        visited[current] = True
+
+
+def bfs(edges , verticeCount , start):
+    d = {}
+    for eFrom , eTo in edges:
+        if eFrom in d:
+            d[eFrom].append(eTo)
+            continue
+        d[eFrom] = [eTo]
+    check = { start :0}
+    visited = {}
+    for i in range(1 , verticeCount + 1 ):
+        visited[i] = False
+    root = [start]
+    while(root):
+        current = root.pop(0)
+        if(visited[current]):
+            continue
+        print(current)
+        for i in d[current]:
+            if(i in check):
+                continue
+            check[i]=0
+            root.append(i)
+        visited[current] = True
+    print(d)
+edges = [ [1,2],[1,4],[1,5],[2,1],[2,3],[2,5],[3,2],[3,4],[3,6],[4,1],[4,5],[4,3],[4,6],[4,7],[5,1],[5,2],[5,4],[5,7],[6,3],[6,4],[6,7],[7,5],[7,4],[7,6]]
+verticeCount = 7
+edgeCount = 24
+dfs(edges , verticeCount , 1 )
+print("--------------------------------------------------->")
+bfs(edges , verticeCount , 1 )
+
+
+
+
+
+
